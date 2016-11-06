@@ -2,11 +2,36 @@ fn main() {
     let mut arr = [61, 21, 27, 79, 57, 60, 46, 42, 27, 92, 66, 26];
 
     sort(&mut arr);
-    // TODO: print `arr`
+    println!("{:?}", arr);
 }
 
-// TODO: write `sort()` function
 
+fn sort(arr: &mut [i32]) {
+    let mut min;
+    let mut temp = 0;
+    let mut pointer = 0;
+    let length = arr.len();
+    
+    for counter in 0..length {
+        min = arr[counter];
+        // läuft unsortierten teil des arrays ab
+        for counter2  in 0..length {
+            let iter = counter2 + counter;
+            if iter > length - 1{
+                break;
+            }
+            
+            if arr[iter] <= min {
+                min = arr[iter];
+                temp = arr[counter];
+                pointer = iter;
+            }
+        // tausche min an die richtige Stelle
+        arr[counter] = min;
+        arr[pointer] = temp;
+        }
+    }
+}
 
 #[test]
 fn sort_array() {
@@ -24,3 +49,4 @@ fn sort_array() {
         90, 91, 92, 94, 95, 96, 98,
     ] as &[u64]);
 }
+

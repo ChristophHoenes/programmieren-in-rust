@@ -2,7 +2,29 @@
 
 fn main() {
 
+    println!("1");
+    for prime in 2..21 {
+        if is_prime(prime){
+            println!("{}*", prime);
+        } else {
+            println!("{}", prime);
+        }
+    }
+
 }
+
+fn is_prime(prime: i32) -> bool {
+    let mut iterator = 2;
+    // testet ob ohne Rest teilbar, wenn nicht = Primzahl
+    while iterator <= prime / 2 {
+        if prime % iterator == 0 {
+        return false;
+        }
+        iterator += 1;
+    }
+    true
+}
+    
 
 #[test]
 fn small_primes() {
